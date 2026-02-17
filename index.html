@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Labs - Scale Faster, Cheaper, Smarter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        /* Header/Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e84c3d;
+            text-decoration: none;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #666;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #e84c3d;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #1a1a1a;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e84c3d;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.3s, transform 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: #d63c2d;
+            transform: translateY(-2px);
+        }
+
+        /* Value Props */
+        .value-props {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-prop {
+            padding: 2rem;
+            background: #f8f8f8;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .value-prop h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .value-prop p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: #f0f0f0;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .problem-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .problem h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .problem p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Solution Section */
+        .solution {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .solution h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .solution-item {
+            padding: 2rem;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+
+        .solution-item:hover {
+            border-color: #e84c3d;
+        }
+
+        .solution-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #e84c3d;
+        }
+
+        .solution-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            background: #f8f8f8;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .case-studies-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .case-studies h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        .case-study {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #e84c3d;
+        }
+
+        .case-study-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .case-study h4 {
+            font-size: 1.3rem;
+            color: #1a1a1a;
+        }
+
+        .case-study-metric {
+            background: #e84c3d;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .case-study p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .case-study-challenge {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .case-study-challenge strong {
+            color: #e84c3d;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #e84c3d 0%, #d63c2d 100%);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .final-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button-white {
+            background: white;
+            color: #e84c3d;
+        }
+
+        .cta-button-white:hover {
+            background: #f0f0f0;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .case-study-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .case-study-metric {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Sakura Labs</a>
+            <nav>
+                <a href="#solution">What We Do</a>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Scale Faster, Cheaper, Smarter</h1>
+        <p class="tagline">Custom tools and workflow automation that let you grow without hiring. We build the tech, you run the business.</p>
+        <a href="#contact" class="cta-button">Schedule a Demo</a>
+    </section>
+
+    <!-- Value Props -->
+    <section class="value-props">
+        <div class="value-prop">
+            <h3>⚡ Custom Tools</h3>
+            <p>Built specifically for your business. Not generic software. Real solutions to your real problems.</p>
+        </div>
+        <div class="value-prop">
+            <h3>💰 Cost Effective</h3>
+            <p>Skip the expensive SaaS subscriptions and bloated enterprise software. Pay for what you actually need.</p>
+        </div>
+        <div class="value-prop">
+            <h3>🔧 We Maintain It</h3>
+            <p>Build, deploy, and maintain. We handle updates, fixes, and optimization so you don't have to.</p>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem">
+        <div class="problem-container">
+            <h2>The Problem Most SMBs Face</h2>
+            <p>You're growing. Your team is stretched thin. Every new hire costs money, training takes time, and your operations are still running on spreadsheets, manual processes, and tools that don't talk to each other.</p>
+            <p>You need to scale, but you can't afford to hire 5 new people. And generic SaaS solutions don't fit how you actually work.</p>
+            <p>That's where we come in.</p>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="solution" id="solution">
+        <h2>Our Approach</h2>
+        <div class="solution-grid">
+            <div class="solution-item">
+                <h4>Discovery & Analysis</h4>
+                <p>We dig into your operations. We find the bottlenecks, the manual processes eating up time, and the gaps where automation can help.</p>
+            </div>
+            <div class="solution-item">
+                <h4>Custom Build</h4>
+                <p>We build tools tailored to how you work. Not forcing you into someone else's system. Your tool, your rules.</p>
+            </div>
+            <div class="solution-item">
+                <h4>Ongoing Support</h4>
+                <p>We deploy it, we maintain it, we optimize it. Updates, fixes, new features as you grow. You focus on business, we handle the tech.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies" id="case-studies">
+        <div class="case-studies-container">
+            <h2>Real Results</h2>
+
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4>Boutique Hotel in South Florida</h4>
+                    <span class="case-study-metric">45% efficiency gain</span>
+                </div>
+                <div class="case-study-challenge">
+                    <strong>The Challenge:</strong> Manual booking management, scattered customer data, no automated reminders or follow-ups. Front desk staff spent 3 hours daily on administrative work.
+                </div>
+                <p>We built a centralized guest management system with automated check-in reminders, integrated payment processing, and a simple dashboard for staff to manage bookings, cancellations, and upsells. Built in 4 weeks, training took 1 day.</p>
+                <p><strong>Result:</strong> 3 hours of daily admin work cut to 90 minutes. No new hires needed. Customers got faster service. Revenue stayed the same, margin improved.</p>
+            </div>
+
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4>Fitness Studio in Miami</h4>
+                    <span class="case-study-metric">60% faster client onboarding</span>
+                </div>
+                <div class="case-study-challenge">
+                    <strong>The Challenge:</strong> New members were dropping off because onboarding was clunky. Trainers were using their phones to track client progress. Billing was a nightmare (spreadsheets + manual invoicing).
+                </div>
+                <p>We built a member portal (progress tracking, workout history, nutrition guides), automated billing with payment reminders, and a trainer dashboard that pulls everything together. Integrated with their existing payment processor.</p>
+                <p><strong>Result:</strong> 30-day member retention increased from 65% to 85%. Trainers saved 5 hours/week on admin. Billing errors dropped to near zero. They grew without hiring admin staff.</p>
+            </div>
+
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4>Digital Marketing Consultant (Solo Practitioner)</h4>
+                    <span class="case-study-metric">10 hours/week saved</span>
+                </div>
+                <div class="case-study-challenge">
+                    <strong>The Challenge:</strong> Juggling client projects across multiple tools (email, Slack, spreadsheets). Couldn't track who was paying, who needed follow-ups, or where projects stood. Invoicing was manual. Time tracking was non-existent.
+                </div>
+                <p>We built a simple project management + billing dashboard. Clients can log in to see project status, deliverables, and invoice history. Automated reminders for late payments. Built-in time tracking. Everything synced.</p>
+                <p><strong>Result:</strong> 10 hours/week saved on admin. Could take on 30% more clients without hiring. Revenue per month increased $4k with zero additional headcount.</p>
+            </div>
+
+            <div class="case-study">
+                <div class="case-study-header">
+                    <h4>Boutique Spa in Los Angeles</h4>
+                    <span class="case-study-metric">40% reduction in no-shows</span>
+                </div>
+                <div class="case-study-challenge">
+                    <strong>The Challenge:</strong> No-shows were costing them $2k/month in lost revenue. Client data was scattered across multiple notebooks and emails. Inventory tracking (lotions, oils, supplies) was manual and error-prone.
+                </div>
+                <p>We built an appointment system with automated SMS reminders (24h before, 2h before), customer profiles with service history and preferences, and inventory management that flags when supplies are low. Simple staff dashboard.</p>
+                <p><strong>Result:</strong> No-show rate dropped 40%. Clients felt more personalized service. Inventory ordering became efficient (cut waste by 25%). Operations smoother with the same team.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="contact">
+        <h2>Ready to Scale Without Hiring?</h2>
+        <p>Let's talk about your biggest operational bottleneck. We'll scope a solution and show you how much time (and money) you could save.</p>
+        <a href="mailto:hello@sakuralabs.com" class="cta-button cta-button-white">Schedule a Discovery Call</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Sakura Labs. All rights reserved.</p>
+        <p>We help companies stay up with the modern day — building tools that allow them to scale faster and cheaper without hiring more.</p>
+        <p><a href="mailto:hello@sakuralabs.com" style="color: #e84c3d; text-decoration: none;">hello@sakuralabs.com</a></p>
+    </footer>
+</body>
+</html>
