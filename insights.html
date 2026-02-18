@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Insights - Sakura Labs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1f36;
+            background: linear-gradient(135deg, #f5f7fa 0%, #f0f2f5 100%);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 2px 10px rgba(30, 64, 175, 0.05);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1e40af;
+        }
+
+        /* Hero */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Filters */
+        .filters {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid rgba(30, 64, 175, 0.2);
+            background: white;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #666;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            border-color: #1e40af;
+        }
+
+        .filter-btn:hover {
+            border-color: #1e40af;
+        }
+
+        /* Articles Grid */
+        .articles {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .article {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(30, 64, 175, 0.1);
+            cursor: pointer;
+        }
+
+        .article:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(30, 64, 175, 0.15);
+        }
+
+        .article-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.05), rgba(59, 130, 246, 0.05));
+            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
+        }
+
+        .article-category {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: #1e40af;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1f36;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-date {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .article-body {
+            padding: 2rem;
+        }
+
+        .article-excerpt {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .read-more {
+            color: #1e40af;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer p {
+            margin: 1rem 0;
+            opacity: 0.8;
+        }
+
+        footer a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .articles {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="index-v2.html" class="logo">Sakura</a>
+            <nav>
+                <a href="index-v2.html">Home</a>
+                <a href="insights.html">Insights</a>
+                <a href="index-v2.html#cta">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Market Insights for SMB Owners</h1>
+        <p>Research, trends, and strategies to help your business scale operations without hiring. Fresh insights every week.</p>
+    </section>
+
+    <!-- Filters -->
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterArticles('all')">All Industries</button>
+        <button class="filter-btn" onclick="filterArticles('fitness')">🏋️ Fitness Studios</button>
+        <button class="filter-btn" onclick="filterArticles('salon')">💇 Salons & Spas</button>
+        <button class="filter-btn" onclick="filterArticles('hotel')">🏨 Hotels & Hospitality</button>
+        <button class="filter-btn" onclick="filterArticles('agency')">🎯 Agencies & Consultants</button>
+    </div>
+
+    <!-- Articles -->
+    <section class="articles" id="articles">
+        <!-- EXAMPLE ARTICLES - You can add more or customize -->
+
+        <article class="article" data-category="fitness">
+            <div class="article-header">
+                <div class="article-category">Fitness Studios</div>
+                <h2 class="article-title">The No-Show Crisis: How to Recover $50k/Year in Lost Revenue</h2>
+                <div class="article-date">February 18, 2026</div>
+            </div>
+            <div class="article-body">
+                <p class="article-excerpt">Most fitness studios lose 15-20% of their revenue to no-shows. We analyzed 50+ studios and found the ones cutting no-shows to <5% using one simple strategy. Here's what they're doing differently.</p>
+                <div class="article-meta">
+                    <span>8 min read</span>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="article" data-category="salon">
+            <div class="article-header">
+                <div class="article-category">Salons & Spas</div>
+                <h2 class="article-title">Salon Scheduling Software Compared: What Actually Works in 2026</h2>
+                <div class="article-date">February 17, 2026</div>
+            </div>
+            <div class="article-body">
+                <p class="article-excerpt">We reviewed 15 salon scheduling platforms. Most fail at one critical thing. We analyzed what the top performers have in common—and it's not what you'd expect.</p>
+                <div class="article-meta">
+                    <span>12 min read</span>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="article" data-category="hotel">
+            <div class="article-header">
+                <div class="article-category">Hotels & Hospitality</div>
+                <h2 class="article-title">Revenue Management for Boutique Hotels: The Tech Stack That Works</h2>
+                <div class="article-date">February 16, 2026</div>
+            </div>
+            <div class="article-body">
+                <p class="article-excerpt">Boutique hotels leave 5-12% of potential revenue on the table. We researched 40+ independent hotels and found the ones optimizing revenue are using a specific combination of tools.</p>
+                <div class="article-meta">
+                    <span>10 min read</span>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="article" data-category="agency">
+            <div class="article-header">
+                <div class="article-category">Agencies & Consultants</div>
+                <h2 class="article-title">Why Agencies Lose 15% of Billable Revenue (And How to Stop)</h2>
+                <div class="article-date">February 15, 2026</div>
+            </div>
+            <div class="article-body">
+                <p class="article-excerpt">We interviewed 30 agency owners. All of them were losing money to time tracking chaos, double entry, and invoicing delays. Here's the system the top performers use.</p>
+                <div class="article-meta">
+                    <span>9 min read</span>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="article" data-category="fitness">
+            <div class="article-header">
+                <div class="article-category">Fitness Studios</div>
+                <h2 class="article-title">Member Retention 101: What Gyms Are Actually Doing Right</h2>
+                <div class="article-date">February 14, 2026</div>
+            </div>
+            <div class="article-body">
+                <p class="article-excerpt">Average gym churn is 30%. But some studios drop that to 8%. We studied what they're doing differently. Spoiler: it's not just better classes.</p>
+                <div class="article-meta">
+                    <span>7 min read</span>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="article" data-category="salon">
+            <div class="article-header">
+                <div class="article-category">Salons & Spas</div>
+                <h2 class="article-title">The Inventory Problem: How Salons Are Cutting Waste by 30%</h2>
+                <div class="article-date">February 13, 2026</div>
+            </div>
+            <div class="article-body">
+                <p class="article-excerpt">Manual inventory tracking costs salons thousands per year in waste, overordering, and theft. The ones eliminating this problem are using one specific approach.</p>
+                <div class="article-meta">
+                    <span>8 min read</span>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="article" data-category="hotel">
+            <div class="article-header">
+                <div class="article-category">Hotels & Hospitality</div>
+                <h2 class="article-title">Boutique Hotel Staffing: How to Do More with Fewer People</h2>
+                <div class="article-date">February 12, 2026</div>
+            </div>
+            <div class="article-body">
+                <p class="article-excerpt">97% of hotels struggle with staffing. But the ones adapting fastest are automating the right tasks—and cutting their admin burden by 40%.</p>
+                <div class="article-meta">
+                    <span>11 min read</span>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="article" data-category="agency">
+            <div class="article-header">
+                <div class="article-category">Agencies & Consultants</div>
+                <h2 class="article-title">The Project Management Stack: What High-Margin Agencies Use</h2>
+                <div class="article-date">February 11, 2026</div>
+            </div>
+            <div class="article-body">
+                <p class="article-excerpt">Most agencies use 5+ disconnected tools. The ones doubling their margins are consolidating into one unified workflow. Here's what they switched to.</p>
+                <div class="article-meta">
+                    <span>10 min read</span>
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Want weekly insights in your inbox?</strong></p>
+        <p style="margin: 1.5rem 0;"><a href="mailto:Nami@sakuralabs.io">Subscribe to Sakura Labs insights</a></p>
+        <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); opacity: 0.7; font-size: 0.9rem;">Sakura Labs © 2026. We help SMBs scale operations without hiring.</p>
+    </footer>
+
+    <script>
+        function filterArticles(category) {
+            const articles = document.querySelectorAll('.article');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter articles
+            articles.forEach(article => {
+                if (category === 'all' || article.dataset.category === category) {
+                    article.style.display = 'block';
+                    setTimeout(() => article.style.opacity = '1', 10);
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
