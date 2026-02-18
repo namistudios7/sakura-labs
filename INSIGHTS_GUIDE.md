@@ -64,6 +64,16 @@ Option B: Create separate article page (advanced)
 
 ## Article Ideas by Vertical
 
+### 🔧 Trades & Service Companies
+- "Estimating Chaos: How Contractors Win Bids 50% Faster"
+- "Crew Scheduling: The System Winning Contractors Use"
+- "Invoice Collection for Trade Companies: Stop Chasing Payments"
+- "Material Tracking: How to Stop Losing Money on Waste"
+- "Customer Communication: Why Clarity Beats Confusion"
+- "Job Costing: Why You're Underpricing Work"
+- "Permit & Compliance: Automation That Actually Works"
+- "Mobile Invoicing: Getting Paid Before You Leave the Site"
+
 ### 🏋️ Fitness Studios
 - "The No-Show Crisis: How to Recover $50k/Year"
 - "Member Retention 101: What Top Gyms Do Right"
@@ -123,6 +133,7 @@ Option B: Create separate article page (advanced)
 ## Categorization
 
 **data-category options:**
+- `trades` = Plumbers, Electricians, HVAC, Construction, Contractors, Cleaning, Landscaping
 - `fitness` = Fitness Studios, Gyms, CrossFit boxes
 - `salon` = Salons, Spas, Hair studios, Massage
 - `hotel` = Boutique hotels, B&Bs, Vacation rentals
