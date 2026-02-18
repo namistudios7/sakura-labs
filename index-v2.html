@@ -1009,8 +1009,8 @@ Submitted from Sakura Labs landing page
             `;
 
             try {
-                // Send to email using FormSubmit.co (free service)
-                const emailResponse = await fetch('https://formsubmit.co/ajax/nami@sakuralabs.io', {
+                // Send to email using Basin (free service, no verification)
+                const emailResponse = await fetch('https://usebasin.com/api/v1/submissions/053dd79c4847', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
