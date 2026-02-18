@@ -894,8 +894,81 @@
     <!-- Final CTA -->
     <section class="final-cta" id="cta">
         <h2>Your Window to Catch Up Is Closing</h2>
-        <p>The longer you wait, the further behind you fall. Smart businesses are already automating. Let's get you there in weeks, not months. One discovery call. We'll show you exactly how much your competition is winning.</p>
-        <a href="mailto:hello@sakuralabs.io?subject=Schedule Discovery Call" class="cta-secondary">Get Ahead Now →</a>
+        <p>The longer you wait, the further behind you fall. Businesses are already automating. Let's get you there in weeks, not months. One quick form. We'll show you exactly how much your competition is winning.</p>
+        
+        <div style="max-width: 600px; margin: 3rem auto; background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
+            <form id="leadForm">
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-weight: 600; color: #1a1f36; margin-bottom: 0.5rem; font-size: 0.95rem;">Name *</label>
+                    <input type="text" name="name" required style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; box-sizing: border-box; font-family: inherit;">
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-weight: 600; color: #1a1f36; margin-bottom: 0.5rem; font-size: 0.95rem;">Company *</label>
+                    <input type="text" name="company" required style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; box-sizing: border-box; font-family: inherit;">
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-weight: 600; color: #1a1f36; margin-bottom: 0.5rem; font-size: 0.95rem;">Team Size *</label>
+                    <select name="size" required style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; box-sizing: border-box; font-family: inherit;">
+                        <option value="">Select team size</option>
+                        <option value="1-5">1-5 people</option>
+                        <option value="6-10">6-10 people</option>
+                        <option value="11-20">11-20 people</option>
+                        <option value="20+">20+ people</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-weight: 600; color: #1a1f36; margin-bottom: 0.5rem; font-size: 0.95rem;">Email *</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; box-sizing: border-box; font-family: inherit;">
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <label style="display: block; font-weight: 600; color: #1a1f36; margin-bottom: 0.75rem; font-size: 0.95rem;">Your Biggest Pain Point *</label>
+                    <div style="display: grid; gap: 0.75rem;">
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" name="problem" value="scheduling" style="width: 18px; height: 18px; margin-right: 0.75rem; cursor: pointer;">
+                            <span style="color: #1a1f36; font-size: 0.95rem;">Scheduling chaos & manual coordination</span>
+                        </label>
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" name="problem" value="admin-time" style="width: 18px; height: 18px; margin-right: 0.75rem; cursor: pointer;">
+                            <span style="color: #1a1f36; font-size: 0.95rem;">Too much admin time (5-15 hours/week wasted)</span>
+                        </label>
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" name="problem" value="no-shows" style="width: 18px; height: 18px; margin-right: 0.75rem; cursor: pointer;">
+                            <span style="color: #1a1f36; font-size: 0.95rem;">No-shows & revenue loss</span>
+                        </label>
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" name="problem" value="invoicing" style="width: 18px; height: 18px; margin-right: 0.75rem; cursor: pointer;">
+                            <span style="color: #1a1f36; font-size: 0.95rem;">Invoicing, billing & payment issues</span>
+                        </label>
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" name="problem" value="data-fragmented" style="width: 18px; height: 18px; margin-right: 0.75rem; cursor: pointer;">
+                            <span style="color: #1a1f36; font-size: 0.95rem;">Data scattered across 5+ systems</span>
+                        </label>
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" name="problem" value="reporting" style="width: 18px; height: 18px; margin-right: 0.75rem; cursor: pointer;">
+                            <span style="color: #1a1f36; font-size: 0.95rem;">Can't see what's actually happening in the business</span>
+                        </label>
+                        <label style="display: flex; align-items: center; cursor: pointer;">
+                            <input type="checkbox" name="problem" value="software-costs" style="width: 18px; height: 18px; margin-right: 0.75rem; cursor: pointer;">
+                            <span style="color: #1a1f36; font-size: 0.95rem;">Too much money spent on fragmented software</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" style="width: 100%; padding: 1rem; background: #1e40af; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.3s;">
+                    Let's Talk
+                </button>
+            </form>
+
+            <div id="successMessage" style="display: none; text-align: center; padding: 2rem;">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">✓</div>
+                <h3 style="color: #1a1f36; font-weight: 700; margin-bottom: 0.5rem;">We'll Be In Touch Soon</h3>
+                <p style="color: #666; font-size: 0.95rem;">Thanks for reaching out. Our team will review your info and get back to you within 24 hours.</p>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -905,7 +978,86 @@
     </footer>
 
     <script>
-        // Placeholder for future functionality
+        document.getElementById('leadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Collect form data
+            const formData = new FormData(e.target);
+            const name = formData.get('name');
+            const company = formData.get('company');
+            const size = formData.get('size');
+            const email = formData.get('email');
+            const problems = formData.getAll('problem');
+
+            if (problems.length === 0) {
+                alert('Please select at least one pain point');
+                return;
+            }
+
+            // Prepare email content
+            const emailContent = `
+New Lead Submission:
+
+Name: ${name}
+Company: ${company}
+Team Size: ${size}
+Email: ${email}
+Pain Points: ${problems.join(', ')}
+
+---
+Submitted from Sakura Labs landing page
+            `;
+
+            try {
+                // Send to email using FormSubmit.co (free service)
+                const emailResponse = await fetch('https://formsubmit.co/ajax/nami@sakuralabs.io', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        company: company,
+                        size: size,
+                        email: email,
+                        problems: problems.join(', '),
+                        message: emailContent
+                    })
+                });
+
+                // Send Telegram notification to Ben
+                // Replace with your actual bot token and chat ID
+                const telegramBotToken = 'YOUR_TELEGRAM_BOT_TOKEN';
+                const telegramChatId = 'YOUR_TELEGRAM_CHAT_ID';
+                
+                const telegramMessage = `🔔 New Sakura Labs Lead:\n\n👤 ${name}\n🏢 ${company}\n👥 Team: ${size}\n📧 ${email}\n\n🎯 Pain Points:\n${problems.map(p => '• ' + p.replace(/-/g, ' ')).join('\n')}`;
+
+                if (telegramBotToken !== 'YOUR_TELEGRAM_BOT_TOKEN') {
+                    await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            chat_id: telegramChatId,
+                            text: telegramMessage,
+                            parse_mode: 'HTML'
+                        })
+                    });
+                }
+
+                // Hide form and show success message
+                document.getElementById('leadForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+
+                // Reset form
+                e.target.reset();
+
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('There was an error submitting your information. Please try again.');
+            }
+        });
     </script>
     <script style="display:none;">
         // Carousel Data (archived)
