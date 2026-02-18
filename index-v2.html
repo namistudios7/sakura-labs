@@ -161,6 +161,96 @@
             box-shadow: 0 30px 70px rgba(30, 64, 175, 0.4);
         }
 
+        /* Carousel */
+        .carousel-container {
+            position: relative;
+            margin-top: 3rem;
+            padding: 0 2rem;
+        }
+
+        .carousel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .carousel-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1e40af;
+            transition: opacity 0.3s;
+            padding: 0.5rem;
+        }
+
+        .carousel-btn:hover {
+            opacity: 0.6;
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .carousel-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            min-width: 300px;
+            border: 2px solid rgba(30, 64, 175, 0.2);
+            transition: all 0.3s;
+        }
+
+        .carousel-card:hover {
+            border-color: #1e40af;
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.1);
+        }
+
+        .carousel-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-card h3 {
+            font-size: 1.3rem;
+            color: #1a1f36;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .carousel-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(30, 64, 175, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: #1e40af;
+            width: 24px;
+            border-radius: 4px;
+        }
+
         /* Hero Animation Background */
         .hero::before {
             content: '';
@@ -602,32 +692,19 @@
             <a href="#cta" class="cta-primary">Get Started Free — No Card Required</a>
         </div>
         
-        <div style="margin-top: 4rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1000px; margin-left: auto; margin-right: auto;">
-            <div style="text-align: center;">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔧</div>
-                <div style="font-weight: 600; color: #1a1f36;">Trades & Service</div>
-                <div style="font-size: 0.85rem; color: #666;">Estimating, Scheduling, Invoicing</div>
+        <!-- Carousel for Trades -->
+        <div class="carousel-container">
+            <h3 style="text-align: center; margin-bottom: 2rem; color: #1a1f36; font-weight: 700;">We Serve Every Trade & Service Business</h3>
+            <div class="carousel">
+                <button class="carousel-btn" id="prevBtn" onclick="prevSlide()">❮</button>
+                <div class="carousel-card">
+                    <div class="emoji" id="emoji">🔧</div>
+                    <h3 id="tradeTitle">Plumbers</h3>
+                    <p id="tradePain">Estimating, Scheduling, Invoice Collection</p>
+                </div>
+                <button class="carousel-btn" id="nextBtn" onclick="nextSlide()">❯</button>
             </div>
-            <div style="text-align: center;">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏋️</div>
-                <div style="font-weight: 600; color: #1a1f36;">Fitness Studios</div>
-                <div style="font-size: 0.85rem; color: #666;">Scheduling, Billing, Retention</div>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💇</div>
-                <div style="font-weight: 600; color: #1a1f36;">Salons & Spas</div>
-                <div style="font-size: 0.85rem; color: #666;">No-Shows, Appointments, Inventory</div>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏨</div>
-                <div style="font-weight: 600; color: #1a1f36;">Boutique Hotels</div>
-                <div style="font-size: 0.85rem; color: #666;">Staffing, Revenue, Guest Data</div>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
-                <div style="font-weight: 600; color: #1a1f36;">Agencies & Consultants</div>
-                <div style="font-size: 0.85rem; color: #666;">Projects, Invoicing, Time Tracking</div>
-            </div>
+            <div class="carousel-dots" id="dots"></div>
         </div>
     </section>
 
@@ -818,5 +895,84 @@
         <p><a href="mailto:Nami@sakuralabs.io">Nami@sakuralabs.io</a></p>
         <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.6; font-size: 0.85rem;">We help SMBs scale operations without hiring. Custom tools. Managed completely. Real ROI in weeks.</p>
     </footer>
+
+    <script>
+        // Carousel Data
+        const trades = [
+            { emoji: '🔧', title: 'Plumbers', pain: 'Estimating, Scheduling, Invoice Collection' },
+            { emoji: '⚡', title: 'Electricians', pain: 'Job Costing, Crew Scheduling, Invoicing' },
+            { emoji: '❄️', title: 'HVAC Contractors', pain: 'Service Scheduling, Maintenance Tracking, Billing' },
+            { emoji: '🏗️', title: 'General Contractors', pain: 'Project Management, Crew Coordination, Estimating' },
+            { emoji: '🧱', title: 'Masons & Concrete', pain: 'Quote Generation, Material Tracking, Payments' },
+            { emoji: '🪛', title: 'Handyman Services', pain: 'Job Scheduling, Customer Communication, Invoicing' },
+            { emoji: '🌳', title: 'Landscaping & Grounds', pain: 'Crew Scheduling, Seasonal Planning, Route Optimization' },
+            { emoji: '🧹', title: 'Cleaning Services', pain: 'Team Scheduling, Customer Routes, Payment Collection' },
+            { emoji: '🚿', title: 'Plumbing & Gas', pain: 'Permit Tracking, Material Costs, Revenue per Job' },
+            { emoji: '🔨', title: 'Carpentry & Woodwork', pain: 'Project Estimation, Material Ordering, Billing' },
+            { emoji: '🏠', title: 'Home Inspection', pain: 'Report Generation, Scheduling, Client Follow-up' },
+            { emoji: '🪟', title: 'Window & Door Install', pain: 'Custom Estimating, Installation Scheduling, Callbacks' },
+            { emoji: '🛖', title: 'Roofing Contractors', pain: 'Roof Measurement, Bid Management, Crew Dispatch' },
+            { emoji: '🎨', title: 'Painting Contractors', pain: 'Estimate Tracking, Color Management, Job Costing' },
+            { emoji: '🐭', title: 'Pest Control', pain: 'Service Routes, Warranty Tracking, Treatment Records' },
+            { emoji: '⚙️', title: 'Appliance Repair', pain: 'Parts Inventory, Service Calls, Customer Callbacks' },
+            { emoji: '🌊', title: 'Pool & Spa Services', pain: 'Route Planning, Chemical Tracking, Seasonal Closings' },
+            { emoji: '🪜', title: 'Flooring Contractors', pain: 'Material Calculation, Installation Scheduling, Warranty' },
+        ];
+
+        let currentIndex = 0;
+
+        function initCarousel() {
+            updateCarousel();
+            renderDots();
+        }
+
+        function updateCarousel() {
+            const trade = trades[currentIndex];
+            document.getElementById('emoji').textContent = trade.emoji;
+            document.getElementById('tradeTitle').textContent = trade.title;
+            document.getElementById('tradePain').textContent = trade.pain;
+
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+            document.getElementById('nextBtn').disabled = currentIndex === trades.length - 1;
+
+            // Update active dot
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function renderDots() {
+            const dotsContainer = document.getElementById('dots');
+            trades.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function nextSlide() {
+            if (currentIndex < trades.length - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initCarousel);
+    </script>
 </body>
 </html>
