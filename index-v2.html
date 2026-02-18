@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura Labs — Stop Losing Money to Manual Chaos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #0f0f0f;
+            background: linear-gradient(135deg, #fafbfc 0%, #f3f4f6 100%);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(232, 76, 61, 0.1);
+            padding: 1.2rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #e84c3d 0%, #ff6b5b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: #555;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #e84c3d, #ff6b5b);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(232, 76, 61, 0.1), rgba(255, 107, 91, 0.1));
+            border: 1px solid rgba(232, 76, 61, 0.2);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #e84c3d;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #0f0f0f;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .accent {
+            background: linear-gradient(135deg, #e84c3d 0%, #ff6b5b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subheading {
+            font-size: 1.35rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #e84c3d 0%, #ff6b5b 100%);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 50px rgba(232, 76, 61, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 70px rgba(232, 76, 61, 0.4);
+        }
+
+        /* Hero Animation Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(232, 76, 61, 0.08), transparent);
+            border-radius: 50%;
+            animation: float-slow 8s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -300px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 107, 91, 0.06), transparent);
+            border-radius: 50%;
+            animation: float-slow-reverse 10s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(30px); }
+        }
+
+        @keyframes float-slow-reverse {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        /* Problem Section */
+        .problem {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            padding: 100px 2rem;
+            margin: 80px 0;
+        }
+
+        .problem-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            color: #ff6b5b;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .problem h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .problem-list {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-item {
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .problem-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #ff6b5b, #ff8870);
+            border-radius: 50%;
+        }
+
+        .problem-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .problem-item p {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Solution Section */
+        .solution {
+            max-width: 1200px;
+            margin: 120px auto;
+            padding: 0 2rem;
+        }
+
+        .solution h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .solution-tagline {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(232, 76, 61, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e84c3d, #ff6b5b);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-8px);
+            border-color: #e84c3d;
+            box-shadow: 0 20px 50px rgba(232, 76, 61, 0.15);
+        }
+
+        .solution-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .solution-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(232, 76, 61, 0.1), rgba(255, 107, 91, 0.1));
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .solution-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #0f0f0f;
+            font-weight: 700;
+        }
+
+        .solution-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            background: linear-gradient(135deg, rgba(232, 76, 61, 0.05) 0%, rgba(255, 107, 91, 0.05) 100%);
+            padding: 100px 2rem;
+            border-radius: 30px;
+            margin: 120px 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .case-studies h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .case-study {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            border-left: 5px solid #e84c3d;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-study::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(232, 76, 61, 0.1), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .case-study:hover {
+            transform: translateX(8px);
+            box-shadow: 0 20px 50px rgba(232, 76, 61, 0.1);
+        }
+
+        .case-study-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .case-study h3 {
+            font-size: 1.4rem;
+            color: #0f0f0f;
+            font-weight: 700;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .case-metric {
+            background: linear-gradient(135deg, #e84c3d, #ff6b5b);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .case-challenge {
+            background: linear-gradient(135deg, rgba(232, 76, 61, 0.08), rgba(255, 107, 91, 0.08));
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 3px solid #e84c3d;
+            position: relative;
+            z-index: 2;
+        }
+
+        .case-challenge strong {
+            color: #e84c3d;
+            font-weight: 700;
+        }
+
+        .case-study p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 80px 2rem;
+            background: linear-gradient(135deg, #e84c3d 0%, #ff6b5b 100%);
+            color: white;
+            border-radius: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            border-radius: 50%;
+        }
+
+        .final-cta::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent);
+            border-radius: 50%;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .final-cta p {
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            background: white;
+            color: #e84c3d;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            margin: 1rem 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ff6b5b;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            color: #e84c3d;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .case-study-header {
+                flex-direction: column;
+            }
+
+            .case-metric {
+                align-self: flex-start;
+            }
+
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-item::before {
+                top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">Sakura</div>
+            <nav>
+                <a href="#solution">How It Works</a>
+                <a href="#case-studies">Results</a>
+                <a href="#cta">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">✨ Built for SMB Owners Who Are Done Losing Money</div>
+        <h1>Stop Losing Money to <span class="accent">Manual Chaos</span></h1>
+        <p class="subheading">Custom tools that replace your scattered software, eliminate admin overhead, and free up the money you're wasting on hiring. Built for your workflow. Managed by us. No learning curve.</p>
+        <a href="#cta" class="cta-primary">Get Started Free — No Card Required</a>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem">
+        <div class="problem-content">
+            <div class="section-label">The Reality</div>
+            <h2>Your Team Is Drowning in Manual Work</h2>
+            
+            <div class="problem-list">
+                <div class="problem-item">
+                    <h4>You're Hemorrhaging Time</h4>
+                    <p>Your team spends 5-15 hours per week on manual tasks that could be automated. That's 250-750 hours per year. At $50/hour fully-loaded cost, that's $12,500-37,500 in wasted productivity.</p>
+                </div>
+                
+                <div class="problem-item">
+                    <h4>You Can't Hire Your Way Out</h4>
+                    <p>Adding a full-time employee costs $40-50k/year all-in. You still get the same person-dependent problems. But paying us $2-5k/month is cheaper, more flexible, and actually solves the problem.</p>
+                </div>
+                
+                <div class="problem-item">
+                    <h4>Your Software Stack Is Bleeding Money</h4>
+                    <p>You pay $300-500/month for 5-8 tools that don't talk to each other. You enter the same data 3-4 times per transaction. You forget which subscriptions are even running. That's thousands per year in waste.</p>
+                </div>
+                
+                <div class="problem-item">
+                    <h4>You're Losing Revenue to Operational Chaos</h4>
+                    <p>No-shows, billing errors, missed follow-ups, scheduling conflicts. Each one costs real money. Your fitness studio loses $3-10k/month to no-shows alone. Your salon loses $1-5k/month. That's money on the table.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="solution" id="solution">
+        <h2>Here's What We Actually Do</h2>
+        <p class="solution-tagline">We replace your scattered software with one unified tool, manage it completely, and free up your team to run the business instead of managing chaos.</p>
+        
+        <div class="solution-grid">
+            <div class="solution-card">
+                <div class="solution-icon">🔧</div>
+                <h3>Custom-Built for You</h3>
+                <p>Not a generic SaaS platform forcing you into their system. We build tools that work the way YOUR business actually operates. Your workflow. Your rules. Your tool.</p>
+            </div>
+            
+            <div class="solution-card">
+                <div class="solution-icon">⚙️</div>
+                <h3>We Manage Everything</h3>
+                <p>You don't have to learn it. You don't have to maintain it. We build it, deploy it, update it, fix it, optimize it. You focus on running your business. That's it.</p>
+            </div>
+            
+            <div class="solution-card">
+                <div class="solution-icon">📈</div>
+                <h3>Real Results in Weeks</h3>
+                <p>Most tools take months to implement and ROI. We deliver working solutions in 4-8 weeks. You see the savings and revenue gains immediately. No long ramp-up.</p>
+            </div>
+            
+            <div class="solution-card">
+                <div class="solution-icon">💰</div>
+                <h3>Less Than Hiring</h3>
+                <p>$2-5k/month is less than a full-time employee ($40-50k/year). But it replaces 5-10 hours of admin work per week plus recovers lost revenue. Better ROI than any hire.</p>
+            </div>
+            
+            <div class="solution-card">
+                <div class="solution-icon">🔄</div>
+                <h3>No Long Contracts</h3>
+                <p>30-day commitment. If you hate it, cancel. No strings. We don't need contracts because our customers stay because we deliver actual value. Simple.</p>
+            </div>
+            
+            <div class="solution-card">
+                <div class="solution-icon">✅</div>
+                <h3>One Dashboard, All Visibility</h3>
+                <p>All your data in one place. Real-time insights. Automated reports. Tracking without pulling from 5 different systems. Finally know what's actually happening in your business.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies" id="case-studies">
+        <h2>What Happens When You Stop the Chaos</h2>
+        
+        <div class="case-study">
+            <div class="case-study-header">
+                <h3>Boutique Fitness Studio, South Florida</h3>
+                <span class="case-metric">45% Less Admin Time</span>
+            </div>
+            <div class="case-challenge">
+                <strong>The Problem:</strong> 8+ hours/week on scheduling conflicts, member billing issues, staff coordination. Members were churning because of scheduling confusion and billing errors.
+            </div>
+            <p><strong>What Changed:</strong> We built a unified member dashboard with auto-reminders, smart scheduling that shows staff availability, and integrated billing that actually works.</p>
+            <p><strong>The Result:</strong> 8 hours/week became 4.5 hours/week (45% reduction). Member churn dropped 18%. That's 25+ extra members staying per year = $30k-50k more annual revenue. Total cost: $3k/month. ROI: Pays for itself month 1.</p>
+        </div>
+        
+        <div class="case-study">
+            <div class="case-study-header">
+                <h3>Upscale Salon, Los Angeles</h3>
+                <span class="case-metric">$48k Revenue Recovered</span>
+            </div>
+            <div class="case-challenge">
+                <strong>The Problem:</strong> 35% no-show rate costing $4k/month in lost revenue. Clients forgetting appointments. No follow-up system. Inventory was manual nightmare.
+            </div>
+            <p><strong>What Changed:</strong> Automated SMS/email reminders 24h and 2h before appointments. Deposit requirement for chronic no-shows. Client portal showing their service history.</p>
+            <p><strong>The Result:</strong> No-show rate dropped to 8%. That's $3k-4k/month revenue recovered. Plus 10 hours/week saved on admin. First year value: $48k+ in recovered revenue alone. Cost: $2.5k/month.</p>
+        </div>
+        
+        <div class="case-study">
+            <div class="case-study-header">
+                <h3>Digital Marketing Agency, Austin</h3>
+                <span class="case-metric">$36k Annual Cash Flow Improvement</span>
+            </div>
+            <div class="case-challenge">
+                <strong>The Problem:</strong> Project chaos across Asana/Monday/Slack. Time tracking was manual (losing billable hours). Invoicing delays meant slow cash collection. Proposals took 6+ hours to customize.
+            </div>
+            <p><strong>What Changed:</strong> One integrated dashboard for all projects. Automatic time tracking tied to billing. Client portal for proposal review. Smart invoicing that auto-triggers payment reminders.</p>
+            <p><strong>The Result:</strong> 12 hours/week saved on admin. Time tracking accuracy improved 30% = $8k-12k/year more billable revenue. Invoices sent 10 days faster = $3k-5k faster cash flow per month = $36k-60k annual improvement. Cost: $3.5k/month. Pays for itself in month 1.</p>
+        </div>
+        
+        <div class="case-study">
+            <div class="case-study-header">
+                <h3>Boutique Hotel, Miami</h3>
+                <span class="case-metric">10% Revenue Increase</span>
+            </div>
+            <div class="case-challenge">
+                <strong>The Problem:</strong> Reservation system was chaos (double bookings, OTA conflicts). Guest data all over the place. Housekeeping coordination nightmare. Pricing strategy non-existent (just accepting whatever came in).
+            </div>
+            <p><strong>What Changed:</strong> Unified guest CRM with booking history and preferences. Smart pricing based on demand/season. Housekeeping dashboard showing room status real-time. Automated guest comms before/after stay.</p>
+            <p><strong>The Result:</strong> Zero double bookings. Pricing optimization added $2-3/room average per night. Upsells increased 15%. Guest experience improved (better reviews). Annual revenue increase: 8-12 rooms × $100-150/night × 70% occupancy × 365 days = $205k-307k annual increase. Cost: $4k/month. Pays for itself in 2-3 weeks.</p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="cta">
+        <h2>Stop Paying for the Problem. Start Solving It.</h2>
+        <p>30-minute discovery call. We'll show you exactly how much money you're losing to manual chaos and what it would cost to fix it. No sales pitch. Just numbers.</p>
+        <a href="mailto:Nami@sakuralabs.io?subject=Schedule Discovery Call" class="cta-secondary">Schedule Discovery Call</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Sakura Labs. Made for SMB owners who are done losing money.</p>
+        <p><a href="mailto:Nami@sakuralabs.io">Nami@sakuralabs.io</a></p>
+        <p style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.6; font-size: 0.85rem;">We help SMBs scale operations without hiring. Custom tools. Managed completely. Real ROI in weeks.</p>
+    </footer>
+</body>
+</html>
