@@ -18,8 +18,8 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #0f0f0f;
-            background: linear-gradient(135deg, #fafbfc 0%, #f3f4f6 100%);
+            color: #1a1f36;
+            background: linear-gradient(135deg, #f5f7fa 0%, #f0f2f5 100%);
             overflow-x: hidden;
         }
 
@@ -30,10 +30,11 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(232, 76, 61, 0.1);
+            border-bottom: 1px solid rgba(30, 64, 175, 0.1);
             padding: 1.2rem 2rem;
+            box-shadow: 0 2px 10px rgba(30, 64, 175, 0.05);
         }
 
         .header-content {
@@ -48,7 +49,7 @@
             font-size: 1.6rem;
             font-weight: 900;
             letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #e84c3d 0%, #ff6b5b 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -61,7 +62,7 @@
 
         nav a {
             font-size: 0.95rem;
-            color: #555;
+            color: #666;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
@@ -75,8 +76,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #e84c3d, #ff6b5b);
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
             transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: #1e40af;
         }
 
         nav a:hover::after {
@@ -94,16 +99,21 @@
             text-align: center;
             position: relative;
             z-index: 10;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.03) 0%, rgba(59, 130, 246, 0.05) 100%), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><defs><pattern id="dots" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.5" fill="%231e40af" opacity="0.1"/><circle cx="30" cy="30" r="1" fill="%233b82f6" opacity="0.08"/><circle cx="60" cy="60" r="1.5" fill="%231e40af" opacity="0.1"/><circle cx="80" cy="20" r="1" fill="%233b82f6" opacity="0.08"/></pattern></defs><rect width="100%" height="100%" fill="white"/><rect width="100%" height="100%" fill="url(%23dots)"/></svg>') repeat;
+            background-size: auto, 200px 200px;
+            border-radius: 30px;
+            margin: 40px 2rem;
         }
 
         .hero-badge {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(232, 76, 61, 0.1), rgba(255, 107, 91, 0.1));
-            border: 1px solid rgba(232, 76, 61, 0.2);
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid rgba(30, 64, 175, 0.2);
             padding: 0.6rem 1.5rem;
             border-radius: 50px;
             font-size: 0.85rem;
-            color: #e84c3d;
+            color: #1e40af;
             font-weight: 600;
             margin-bottom: 2rem;
             backdrop-filter: blur(10px);
@@ -114,12 +124,12 @@
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            color: #0f0f0f;
+            color: #1a1f36;
             letter-spacing: -1px;
         }
 
         .hero h1 .accent {
-            background: linear-gradient(135deg, #e84c3d 0%, #ff6b5b 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -136,7 +146,7 @@
 
         .cta-primary {
             display: inline-block;
-            background: linear-gradient(135deg, #e84c3d 0%, #ff6b5b 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
             padding: 1.2rem 3rem;
             border-radius: 12px;
@@ -146,12 +156,12 @@
             border: none;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 20px 50px rgba(232, 76, 61, 0.3);
+            box-shadow: 0 20px 50px rgba(30, 64, 175, 0.3);
         }
 
         .cta-primary:hover {
             transform: translateY(-4px);
-            box-shadow: 0 30px 70px rgba(232, 76, 61, 0.4);
+            box-shadow: 0 30px 70px rgba(30, 64, 175, 0.4);
         }
 
         /* Hero Animation Background */
@@ -162,7 +172,7 @@
             right: -200px;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(232, 76, 61, 0.08), transparent);
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.08), transparent);
             border-radius: 50%;
             animation: float-slow 8s ease-in-out infinite;
             z-index: -1;
@@ -175,7 +185,7 @@
             left: -300px;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(255, 107, 91, 0.06), transparent);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.06), transparent);
             border-radius: 50%;
             animation: float-slow-reverse 10s ease-in-out infinite;
             z-index: -1;
@@ -193,7 +203,7 @@
 
         /* Problem Section */
         .problem {
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
             color: white;
             padding: 100px 2rem;
             margin: 80px 0;
@@ -206,7 +216,7 @@
 
         .section-label {
             font-size: 0.85rem;
-            color: #ff6b5b;
+            color: #1e40af;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -239,7 +249,7 @@
             top: 2px;
             width: 12px;
             height: 12px;
-            background: linear-gradient(135deg, #ff6b5b, #ff8870);
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
             border-radius: 50%;
         }
 
@@ -288,7 +298,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
-            border: 1px solid rgba(232, 76, 61, 0.1);
+            border: 1px solid rgba(30, 64, 175, 0.1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
@@ -301,7 +311,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #e84c3d, #ff6b5b);
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s;
@@ -309,8 +319,8 @@
 
         .solution-card:hover {
             transform: translateY(-8px);
-            border-color: #e84c3d;
-            box-shadow: 0 20px 50px rgba(232, 76, 61, 0.15);
+            border-color: #1e40af;
+            box-shadow: 0 20px 50px rgba(30, 64, 175, 0.15);
         }
 
         .solution-card:hover::before {
@@ -320,7 +330,7 @@
         .solution-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, rgba(232, 76, 61, 0.1), rgba(255, 107, 91, 0.1));
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(59, 130, 246, 0.1));
             border-radius: 12px;
             margin-bottom: 1.5rem;
             display: flex;
@@ -332,7 +342,7 @@
         .solution-card h3 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: #0f0f0f;
+            color: #1a1f36;
             font-weight: 700;
         }
 
@@ -344,7 +354,7 @@
 
         /* Case Studies */
         .case-studies {
-            background: linear-gradient(135deg, rgba(232, 76, 61, 0.05) 0%, rgba(255, 107, 91, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.03) 0%, rgba(59, 130, 246, 0.05) 100%);
             padding: 100px 2rem;
             border-radius: 30px;
             margin: 120px 2rem;
@@ -366,7 +376,7 @@
             padding: 3rem;
             border-radius: 20px;
             margin-bottom: 2rem;
-            border-left: 5px solid #e84c3d;
+            border-left: 5px solid #1e40af;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
@@ -379,14 +389,15 @@
             right: 0;
             width: 150px;
             height: 150px;
-            background: radial-gradient(circle, rgba(232, 76, 61, 0.1), transparent);
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.08), transparent);
             border-radius: 50%;
             pointer-events: none;
         }
 
         .case-study:hover {
             transform: translateX(8px);
-            box-shadow: 0 20px 50px rgba(232, 76, 61, 0.1);
+            box-shadow: 0 20px 50px rgba(30, 64, 175, 0.1);
+            border-left-color: #3b82f6;
         }
 
         .case-study-header {
@@ -402,14 +413,14 @@
 
         .case-study h3 {
             font-size: 1.4rem;
-            color: #0f0f0f;
+            color: #1a1f36;
             font-weight: 700;
             flex: 1;
             min-width: 250px;
         }
 
         .case-metric {
-            background: linear-gradient(135deg, #e84c3d, #ff6b5b);
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
@@ -419,17 +430,17 @@
         }
 
         .case-challenge {
-            background: linear-gradient(135deg, rgba(232, 76, 61, 0.08), rgba(255, 107, 91, 0.08));
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.08), rgba(59, 130, 246, 0.08));
             padding: 1.5rem;
             border-radius: 12px;
             margin: 1.5rem 0;
-            border-left: 3px solid #e84c3d;
+            border-left: 3px solid #1e40af;
             position: relative;
             z-index: 2;
         }
 
         .case-challenge strong {
-            color: #e84c3d;
+            color: #1e40af;
             font-weight: 700;
         }
 
@@ -447,7 +458,7 @@
             max-width: 1000px;
             margin: 100px auto;
             padding: 80px 2rem;
-            background: linear-gradient(135deg, #e84c3d 0%, #ff6b5b 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
             border-radius: 30px;
             text-align: center;
@@ -462,7 +473,7 @@
             right: -10%;
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
             border-radius: 50%;
         }
 
@@ -473,7 +484,7 @@
             left: -5%;
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.08), transparent);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
             border-radius: 50%;
         }
 
@@ -501,7 +512,7 @@
         .cta-secondary {
             display: inline-block;
             background: white;
-            color: #e84c3d;
+            color: #1e40af;
             padding: 1rem 2.5rem;
             border-radius: 12px;
             text-decoration: none;
@@ -516,12 +527,13 @@
 
         .cta-secondary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.2);
+            background: #f0f4ff;
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
             color: white;
             padding: 4rem 2rem 2rem;
             text-align: center;
@@ -536,14 +548,14 @@
         }
 
         footer a {
-            color: #ff6b5b;
+            color: #3b82f6;
             text-decoration: none;
             transition: color 0.3s;
             font-weight: 600;
         }
 
         footer a:hover {
-            color: #e84c3d;
+            color: #1e40af;
         }
 
         /* Responsive */
