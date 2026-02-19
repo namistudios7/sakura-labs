@@ -700,6 +700,12 @@
                 grid-template-columns: 1fr;
             }
 
+            .industry-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+                padding: 0 1rem;
+            }
+
             .problem-item::before {
                 top: 8px;
             }
@@ -728,7 +734,7 @@
             <a href="#cta" class="cta-primary">Get In Touch</a>
         </div>
         
-        <div style="margin-top: 4rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1100px; margin-left: auto; margin-right: auto;">
+        <div class="industry-grid" style="margin-top: 4rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1100px; margin-left: auto; margin-right: auto;">
             <div style="text-align: center; padding: 1.5rem; background: white; border-radius: 12px; border: 1px solid rgba(30, 64, 175, 0.1);">
                 <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔧</div>
                 <div style="font-weight: 600; color: #1a1f36; font-size: 0.95rem;">Plumbing & HVAC</div>
